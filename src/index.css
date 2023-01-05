@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply text-[10px];
+  }
+
+  body {
+    @apply text-4 font-sans font-light leading-4 bg-darkBlue text-pureWhite;
+  }
+
+  .heading-l {
+    @apply text-1 font-light leading-1 text-pureWhite;
+  }
+
+  .heading-m {
+    @apply text-2 font-light leading-2 text-pureWhite;
+  }
+
+  .heading-s {
+    @apply text-2 font-medium leading-2 text-pureWhite;
+  }
+
+  .heading-xs {
+    @apply text-3 font-medium leading-3 text-pureWhite;
+  }
+
+  .desc-m {
+    @apply text-4 font-light leading-4 text-pureWhite;
+  }
+
+  .desc-s {
+    @apply text-5 font-light leading-5 text-pureWhite;
+  }
+
+  .btn {
+    @apply bg-red text-pureWhite border-none px-8 py-4 rounded-[6px] flex justify-center items-center hover:bg-pureWhite hover:text-semiDarkBlue transition-all duration-[0.3s];
+  }
+
+  .btn--full {
+    @apply w-full;
+  }
+}
