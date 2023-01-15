@@ -15,6 +15,7 @@ module.exports = {
     },
 
     fontWeight: {
+      extralight: 200,
       light: 300,
       medium: 500,
     },
@@ -36,5 +37,13 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [],
+
+
+  plugins: [
+    function ({ addVariant }) {
+      addVariant('child', '& > *');
+      addVariant('child-hover', '& > *:hover');
+    }
+  ],
+
 };

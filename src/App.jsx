@@ -2,7 +2,13 @@ import { useState } from "react";
 import Button from "./components/Button";
 import Heading from "./components/Heading";
 import InputField from "./components/InputField";
+import SearchBar from "./components/SearchBar";
 import Text from "./components/Text";
+import Image from "./components/Image";
+
+import image from "./assets/thumbnails/112/regular/small.jpg";
+import Thumbnail from "./components/Thumbnail";
+import Bookmark from "./components/Bookmark";
 
 function App() {
   return (
@@ -35,6 +41,16 @@ function App() {
         id="email"
         placeholder="Email address"
       />
+
+      <SearchBar
+        type="text"
+        name="search"
+        id="search"
+        placeholder="Search for movies or TV series"
+      />
+
+      <Thumbnail src={image} alt={"cover"} />
+      <Bookmark src={image} alt={"cover"} />
     </div>
   );
 }

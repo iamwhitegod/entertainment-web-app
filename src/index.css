@@ -42,4 +42,78 @@
   .btn--full {
     @apply w-full;
   }
+
+  .inputfield {
+    @apply bg-[transparent] font-light flex-grow text-pureWhite px-4 pt-4 pb-5 outline-none border-0 border-b-[1.5px] border-b-greyishBlue border-solid transition-all duration-200 focus:border-b-[1.5px] focus:border-b-pureWhite focus:outline-none placeholder:text-pureWhite placeholder:opacity-[0.5] placeholder:font-light;
+  }
+
+  /* .inputfield:-webkit-autofill,
+  .inputfield:-webkit-autofill:hover,
+  .inputfield:-webkit-autofill:focus,
+  .inputfield:-webkit-autofill:active {
+    @apply bg-[transparent] transition-all;
+  } */
+
+  .inputfield__error {
+    @apply border-b-red;
+  }
+
+  .error__message {
+    @apply text-red absolute right-4 font-light;
+  }
+
+  .searchfield {
+    @apply bg-[transparent] font-extralight text-[24px] flex-grow text-pureWhite px-4 pt-5 pb-4 outline-none border-0 border-b-[1.5px] border-b-greyishBlue border-opacity-0 border-solid transition-all duration-200 focus:border-b-[1.5px] focus:border-b-greyishBlue focus:outline-none placeholder:text-pureWhite placeholder:opacity-[0.5] placeholder:font-extralight placeholder:text-[24px];
+  }
+
+  .searchfield__icon {
+    @apply cursor-pointer;
+  }
+
+  .thumbnail,
+  .bookmark {
+    @apply max-w-[255px] h-[174px] relative cursor-pointer;
+  }
+
+  .thumbnail {
+    @apply hover:after:content-[""] hover:after:block hover:after:bg-[#000] hover:after:opacity-50 hover:after:h-full hover:after:absolute hover:after:w-full hover:after:top-0 hover:after:left-0 after:transition-all duration-500;
+  }
+
+  .thumbnail__btn {
+    @apply hidden items-center justify-center gap-5 pl-4 pr-8 py-4 rounded-full bg-pureWhite bg-opacity-20 w-max absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-10;
+  }
+
+  .bookmark__icon {
+    @apply flex justify-center items-center w-[32px] h-[32px] bg-darkBlue opacity-[50.06%] rounded-full absolute top-[16px] right-[16px] hover:bg-pureWhite hover:opacity-[100%] transition-all duration-100;
+  }
+
+  .bookmark__icon.active {
+    @apply hover:opacity-[50.06%] hover:bg-darkBlue;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+.thumbnail:hover > .thumbnail__btn {
+  display: flex;
+}
+
+.bookmark__icon > svg {
+  fill: none;
+  stroke: #fff;
+}
+
+.bookmark__icon:hover > svg {
+  stroke: #000;
+}
+
+.bookmark__icon.active > svg,
+.bookmark__icon.active:hover > svg {
+  stroke: #fff;
+  fill: #fff;
 }
