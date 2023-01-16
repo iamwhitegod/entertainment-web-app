@@ -44,7 +44,7 @@
   }
 
   .inputfield {
-    @apply bg-[transparent] font-light flex-grow text-pureWhite px-4 pt-4 pb-5 outline-none border-0 border-b-[1.5px] border-b-greyishBlue border-solid transition-all duration-200 focus:border-b-[1.5px] focus:border-b-pureWhite focus:outline-none placeholder:text-pureWhite placeholder:opacity-[0.5] placeholder:font-light;
+    @apply w-full bg-[transparent] font-light flex-grow text-pureWhite px-4 pt-4 pb-5 outline-none border-0 border-b-[1.5px] border-b-greyishBlue border-solid transition-all duration-200 focus:border-b-[1.5px] focus:border-b-pureWhite focus:outline-none placeholder:text-pureWhite placeholder:opacity-[0.5] placeholder:font-extralight;
   }
 
   /* .inputfield:-webkit-autofill,

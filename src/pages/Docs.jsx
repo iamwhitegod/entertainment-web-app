@@ -1,24 +1,18 @@
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import SignUp from "./pages/Signup";
-import Router from "./routes";
+import React from "react";
 
-// import Button from "./components/Button";
-// import Heading from "./components/Heading";
-// import InputField from "./components/InputField";
-// import SearchBar from "./components/SearchBar";
-// import Text from "./components/Text";
-// import Image from "./components/Image";
+import image from "../assets/thumbnails/112/regular/small.jpg";
+import Bookmark from "../components/Bookmark";
+import Button from "../components/Button";
+import Heading from "../components/Heading";
+import Text from "../components/Text";
+import InputField from "../components/InputField";
+import SearchBar from "../components/SearchBar";
+import Thumbnail from "../components/Thumbnail";
 
-// import image from "./assets/thumbnails/112/regular/small.jpg";
-// import Thumbnail from "./components/Thumbnail";
-// import Bookmark from "./components/Bookmark";
-
-function App() {
+function Docs() {
   return (
-    <div className="App">
-      {/* <Heading size={1}>Lorem ipsum dolor sit amet</Heading>
+    <>
+      <Heading size={1}>Lorem ipsum dolor sit amet</Heading>
       <Heading size={2}>Consectetuer adipiscing elit</Heading>
       <Heading size={3}>Donec odio quisque volutpat mattis eros</Heading>
       <Heading size={4}>Nullam malesuada erat ut turpis</Heading>
@@ -55,11 +49,9 @@ function App() {
       />
 
       <Thumbnail src={image} alt={"cover"} />
-      <Bookmark src={image} alt={"cover"} /> */}
-
-      <Router />
-    </div>
+      <Bookmark src={image} alt={"cover"} />
+    </>
   );
 }
 
-export default App;
+export default Docs;
