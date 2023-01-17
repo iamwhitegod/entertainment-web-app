@@ -1,6 +1,6 @@
 import React from "react";
 
-function SearchBar({ type, name, placeholder, id }) {
+function SearchBar({ type, name, placeholder, id, ...others }) {
   return (
     <fieldset className="bg-none border-none flex items-center relative">
       <svg
@@ -21,6 +21,7 @@ function SearchBar({ type, name, placeholder, id }) {
         id={id}
         placeholder={placeholder}
         className="searchfield"
+        {...others}
       />
     </fieldset>
   );

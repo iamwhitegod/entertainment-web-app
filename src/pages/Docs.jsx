@@ -8,10 +8,11 @@ import Text from "../components/Text";
 import InputField from "../components/InputField";
 import SearchBar from "../components/SearchBar";
 import Thumbnail from "../components/Thumbnail";
+import { Stack } from "@mui/system";
 
 function Docs() {
   return (
-    <>
+    <Stack spacing={3} direction="column">
       <Heading size={1}>Lorem ipsum dolor sit amet</Heading>
       <Heading size={2}>Consectetuer adipiscing elit</Heading>
       <Heading size={3}>Donec odio quisque volutpat mattis eros</Heading>
@@ -50,7 +51,7 @@ function Docs() {
 
       <Thumbnail src={image} alt={"cover"} />
       <Bookmark src={image} alt={"cover"} />
-    </>
+    </Stack>
   );
 }
 

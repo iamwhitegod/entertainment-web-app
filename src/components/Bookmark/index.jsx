@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import Icon from "../Icon";
 import Image from "../Image";
 
-function Bookmark({ src, alt }) {
+function Bookmark({ src, alt, isBookmarked }) {
   const [selected, setSelected] = useState(false);
 
   return (
     <div aria-label="bookmark " className="bookmark relative">
       <div
         onClick={() => setSelected(!selected)}
-        className={`bookmark__icon ${selected ? "active" : ""}`}
+        className={`bookmark__icon ${isBookmarked ? "active" : ""}`}
       >
         <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
           <path
