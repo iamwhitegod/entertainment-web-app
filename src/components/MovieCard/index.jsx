@@ -1,17 +1,22 @@
 import { Box } from "@mui/material";
 import React from "react";
+import { useMovie } from "../../contexts/movie";
 import Bookmark from "../Bookmark";
 import Dot from "../Dot";
 import Heading from "../Heading";
 import Icon from "../Icon";
 
 function MovieCard({ movie }) {
+  const { addToBookmarked, removeFromBookmarked } = useMovie();
+
   return (
     <Box display={"flex"} flexDirection="column" gap={0.6}>
       <Bookmark
         src={movie.thumbnail.regular.medium}
         alt={movie.title}
         isBookmarked={movie.isBookmarked}
+        addToBookmarked={() => addToBookmarked(movie)}
+        removeFromBookmarked={() => removeFromBookmarked(movie)}
       />
 
       <Box display={"flex"} gap={1.5} alignItems="center">

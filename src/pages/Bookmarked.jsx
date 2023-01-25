@@ -5,10 +5,12 @@ import Heading from "../components/Heading";
 import SearchBar from "../components/SearchBar";
 import MoviesList from "../components/MoviesList";
 
-import data from ".././../data.json";
 import { filtered } from "../utils/helpers";
+import { useMovie } from "../contexts/movie";
 
 function Bookmarked() {
+  const { bookmarked } = useMovie();
+
   const [bookmarkedMovies, setBookmarkedMovies] = useState(null);
   const [bookmarkedTVseries, setBookmarkedTVseries] = useState(null);
 
@@ -16,16 +18,16 @@ function Bookmarked() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    const getBookmarked = (type) =>
-      data.filter(
+    const getBookmarkedType = (type) =>
+      bookmarked.filter(
         (movie) => movie?.category === type && movie?.isBookmarked === true
       );
-    const bookmarkedMovies = getBookmarked("Movie");
-    const bookmarkedTVseries = getBookmarked("TV Series");
+    const bookmarkedMovies = getBookmarkedType("Movie");
+    const bookmarkedTVseries = getBookmarkedType("TV Series");
 
     setBookmarkedMovies(bookmarkedMovies);
     setBookmarkedTVseries(bookmarkedTVseries);
-  }, []);
+  }, [bookmarked]);
 
   const handleChange = (e) => {
     setSearchQuery(e.target.value);
@@ -61,15 +63,19 @@ function Bookmarked() {
         </Box>
       )) || (
         <Box display="flex" flexDirection="column" gap={5}>
-          <Box display="flex" flexDirection="column" gap={2}>
-            <Heading size={1}>Bookmarked Movies</Heading>
-            <MoviesList movies={bookmarkedMovies} />
-          </Box>
+          {bookmarkedMovies?.length > 0 && (
+            <Box display="flex" flexDirection="column" gap={2}>
+              <Heading size={1}>Bookmarked Movies</Heading>
+              <MoviesList movies={bookmarkedMovies} />
+            </Box>
+          )}
 
-          <Box display="flex" flexDirection="column" gap={2}>
-            <Heading size={1}>Bookmarked TV Series</Heading>
-            <MoviesList movies={bookmarkedTVseries} />
-          </Box>
+          {bookmarkedTVseries?.length > 0 && (
+            <Box display="flex" flexDirection="column" gap={2}>
+              <Heading size={1}>Bookmarked TV Series</Heading>
+              <MoviesList movies={bookmarkedTVseries} />
+            </Box>
+          )}
         </Box>
       )}
     </Main>

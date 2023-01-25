@@ -76,7 +76,7 @@
   }
 
   .thumbnail {
-    @apply hover:after:content-[""] hover:after:block hover:after:bg-[#000] hover:after:opacity-50 hover:after:h-full hover:after:absolute hover:after:w-full hover:after:top-0 hover:after:left-0 after:transition-all duration-500;
+    @apply max-w-[470px] hover:after:content-[""] hover:after:block hover:after:bg-[#000] hover:after:opacity-50 hover:after:h-full hover:after:absolute hover:after:w-full hover:after:top-0 hover:after:left-0 after:transition-all duration-500;
   }
 
   .thumbnail__btn {

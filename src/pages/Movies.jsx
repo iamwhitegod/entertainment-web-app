@@ -5,19 +5,22 @@ import Heading from "../components/Heading";
 import SearchBar from "../components/SearchBar";
 import MoviesList from "../components/MoviesList";
 
-import data from ".././../data.json";
 import { filtered } from "../utils/helpers";
+import { useMovie } from "../contexts/movie";
 
 function Movies() {
-  const [movies, setMovies] = useState(null);
+  const { movies } = useMovie();
+
+  const [movieCategory, setMovieCategory] = useState(null);
   const [search, setSearch] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    const getMovies = () => data.filter((movie) => movie?.category === "Movie");
-    const movies = getMovies();
+    const getMovieCategory = () =>
+      movies.filter((movie) => movie?.category === "Movie");
+    const results = getMovieCategory();
 
-    setMovies(movies);
+    setMovieCategory(results);
   }, []);
 
   const handleChange = (e) => {
@@ -53,7 +56,7 @@ function Movies() {
         <Box display="flex" flexDirection="column" gap={5}>
           <Box display="flex" flexDirection="column" gap={2}>
             <Heading size={1}>Movies</Heading>
-            <MoviesList movies={movies} />
+            <MoviesList movies={movieCategory} />
           </Box>
         </Box>
       )}

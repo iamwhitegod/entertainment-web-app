@@ -7,22 +7,14 @@ import SearchBar from "../components/SearchBar";
 import Main from "../layouts/Main";
 import TrendingList from "../components/TrendingList";
 
-import data from ".././../data.json";
 import { filtered } from "../utils/helpers";
+import { useMovie } from "../contexts/movie";
 
 function Home() {
-  const [trending, setTrending] = useState(null);
-  const [movies, setMovies] = useState(data);
+  const { movies, trending } = useMovie();
+
   const [search, setSearch] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-
-  useEffect(() => {
-    const getTrending = () =>
-      data.filter((movie) => movie?.isTrending === true);
-    const trending = getTrending();
-
-    setTrending(trending);
-  }, []);
 
   const handleChange = (e) => {
     setSearchQuery(e.target.value);

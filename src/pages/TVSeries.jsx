@@ -5,17 +5,19 @@ import Heading from "../components/Heading";
 import SearchBar from "../components/SearchBar";
 import MoviesList from "../components/MoviesList";
 
-import data from ".././../data.json";
 import { filtered } from "../utils/helpers";
+import { useMovie } from "../contexts/movie";
 
 function TVSeries() {
+  const { movies } = useMovie();
+
   const [tvseries, setTvseries] = useState(null);
   const [search, setSearch] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const getTVseries = () =>
-      data.filter((movie) => movie?.category === "TV Series");
+      movies.filter((movie) => movie?.category === "TV Series");
     const tvseries = getTVseries();
 
     setTvseries(tvseries);

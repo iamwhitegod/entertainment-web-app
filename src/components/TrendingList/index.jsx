@@ -6,7 +6,7 @@ function TrendingList({ movies }) {
   return (
     <Box
       display="grid"
-      gridTemplateColumns="repeat(auto-fill, minmax(200px, 1fr))"
+      gridTemplateColumns="repeat(auto-fill, minmax(255px, 1fr))"
       gap={3}
     >
       {movies &&

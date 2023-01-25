@@ -6,6 +6,7 @@ import Dashboard from "../layouts/Dashboard";
 
 // config
 import { DEFAULT_PATH } from "../../config";
+import ProtectedRoute from "../utils/ProtectedRoute";
 
 const Loadable = (Component) => (props) => {
   return (
@@ -19,7 +20,11 @@ export default function Router() {
   return useRoutes([
     {
       path: "/",
-      element: <Dashboard />,
+      element: (
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      ),
       children: [
         { element: <Navigate to={DEFAULT_PATH} replace />, index: true },
         { path: "home", element: <Home /> },
