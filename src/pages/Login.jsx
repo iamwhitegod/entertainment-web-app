@@ -2,6 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
+import { useUser } from "../contexts/auth";
 
 import Container from "@mui/material/Container";
 
@@ -11,6 +12,8 @@ import Button from "../components/Button";
 import Logo from "../components/Logo";
 
 function Login() {
+  const { loginUser } = useUser();
+
   const initialValues = {
     email: "",
     password: "",
@@ -21,8 +24,12 @@ function Login() {
     password: Yup.string().required(),
   });
 
-  const onSubmit = (values, { resetForm }) => {
+  const onSubmit = (values, { resetForm }, onSubmitProps) => {
     console.log(values);
+    const res = loginUser(values);
+    onSubmitProps?.setSubmitting(false);
+
+    resetForm();
   };
 
   return (
@@ -37,7 +44,14 @@ function Login() {
           validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
-          {({ values, handleChange, handleSubmit }) => (
+          {({
+            values,
+            handleChange,
+            handleSubmit,
+            isSubmitting,
+            dirty,
+            isValid,
+          }) => (
             <form onSubmit={handleSubmit}>
               <Heading size={1}>Login</Heading>
 
@@ -64,8 +78,12 @@ function Login() {
                 />
               </div>
 
-              <Button type="submit" className="btn btn--full mb-[24px]">
-                Login to your account
+              <Button
+                type="submit"
+                className="btn btn--full mb-[24px]"
+                disabled={!(dirty && isValid) || isSubmitting}
+              >
+                {isSubmitting ? "Please wait..." : "Login to your account"}
               </Button>
 
               <p className="desc-m text-center">
