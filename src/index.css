@@ -72,7 +72,7 @@
 
   .thumbnail,
   .bookmark {
-    @apply min-w-[255px] h-[174px] relative cursor-pointer;
+    @apply min-w-[255px] h-[224px] md:h-[174px] relative cursor-pointer;
   }
 
   .thumbnail {

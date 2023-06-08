@@ -688,9 +688,16 @@ body {
 .thumbnail,
   .bookmark {
   position: relative;
-  height: 174px;
+  height: 224px;
   min-width: 255px;
   cursor: pointer;
+}
+
+@media (min-width: 900px) {
+  .thumbnail,
+  .bookmark {
+    height: 174px;
+  }
 }
 
 .thumbnail {

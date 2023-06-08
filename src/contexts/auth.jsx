@@ -57,21 +57,26 @@ const UserProvider = ({ children }) => {
 
   const loginUser = (userData) => {
     // Sign In logic
-    const DBUser = JSON.parse(localStorage.getItem("user"));
-    if (!DBUser) return;
+    try {
+      const DBUser = JSON.parse(localStorage.getItem("user"));
+      if (!DBUser) return;
 
-    if (
-      DBUser &&
-      DBUser.email === userData.email &&
-      DBUser.password === userData.password
-    ) {
-      sessionStorage.setItem("user", JSON.stringify(userData));
-      dispatch({
-        type: "LOGIN",
-        payload: userData,
-      });
+      if (
+        DBUser &&
+        DBUser.email === userData.email &&
+        DBUser.password === userData.password
+      ) {
+        sessionStorage.setItem("user", JSON.stringify(userData));
+        dispatch({
+          type: "LOGIN",
+          payload: userData,
+        });
 
-      navigate("/home");
+        navigate("/home");
+      }
+    } catch (err) {
+      console.log(err);
+      throw Error("Oops. Something went wrong. Unable to Login");
     }
   };
 
