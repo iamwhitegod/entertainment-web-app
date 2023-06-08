@@ -9,11 +9,10 @@ function SideBar() {
   return (
     <>
       <Stack
-        direction="column"
-        // justifyContent="space-evenly"
-        spacing={10}
+        direction={{ xs: "row", md: "column" }}
+        spacing={{ xs: 2, sm: 4, md: 10 }}
         alignItems="center"
-        className=" w-fit h-[95vh] max-h-[960px] bg-semiDarkBlue px-[32px] py-[40px] rounded-[20px] sticky top-[16px]"
+        className="w-full md:w-fit h-[72px] md:h-[95vh] max-h-[960px] bg-semiDarkBlue px-[16px] sm:px-[32px] py-[40px] rounded-[20px] md:sticky top-[16px]"
       >
         <Link to="home">
           <Logo />
@@ -21,8 +20,8 @@ function SideBar() {
 
         <Stack flexGrow={1}>
           <Stack
-            spacing={4}
-            direction="column"
+            spacing={{ xs: 3, sm: 4 }}
+            direction={{ xs: "row", md: "column" }}
             justifyContent="center"
             className="sidebar__list"
           >
@@ -39,7 +38,7 @@ function SideBar() {
             </Link>
 
             <Link to="bookmarked">
-              <Icon name="icon-bookmark-full" size={20} />
+              <Icon name="icon-nav-bookmark" size={20} />
             </Link>
           </Stack>
         </Stack>

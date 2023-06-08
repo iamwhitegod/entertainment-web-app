@@ -46,7 +46,12 @@ function Home() {
           </Box>
         </Box>
       )) || (
-        <Box display="flex" flexDirection="column" gap={5}>
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap={5}
+          className="overflow-hidden"
+        >
           <Box display="flex" flexDirection="column" gap={2}>
             <Heading size={1}>Trending</Heading>
             <TrendingList movies={trending} />

@@ -6,7 +6,7 @@ function Main({ children }) {
     <Box
       display="grid"
       gridTemplateColumns="1fr"
-      gridTemplateRows="repeat(min-content,1fr)"
+      gridTemplateRows="repeat(min-content, 1fr)"
       gap={2}
     >
       {children}

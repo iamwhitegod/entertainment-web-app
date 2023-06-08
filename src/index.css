@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply text-4 font-sans font-light leading-4 bg-darkBlue text-pureWhite;
+    @apply text-4 font-sans font-light leading-4 bg-darkBlue text-pureWhite scrollbar-thin scrollbar-track-semiDarkBlue scrollbar-thumb-greyishBlue scrollbar-thumb-rounded-md;
   }
 
   .heading-l {
@@ -76,7 +76,7 @@
   }
 
   .thumbnail {
-    @apply max-w-[470px] hover:after:content-[""] hover:after:block hover:after:bg-[#000] hover:after:opacity-50 hover:after:h-full hover:after:absolute hover:after:w-full hover:after:top-0 hover:after:left-0 after:transition-all duration-500;
+    @apply max-w-[470px] h-[230px] hover:after:content-[""] hover:after:block hover:after:bg-[#000] hover:after:opacity-50 hover:after:h-full hover:after:absolute hover:after:w-full hover:after:top-0 hover:after:left-0 after:transition-all duration-500;
   }
 
   .thumbnail__btn {
@@ -116,4 +116,15 @@ input:-webkit-autofill:active {
 .bookmark__icon.active:hover > svg {
   stroke: #fff;
   fill: #fff;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }

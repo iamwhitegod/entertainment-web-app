@@ -36,14 +36,19 @@ module.exports = {
       5: "2.1rem",
     },
     extend: {},
-  },
 
+    screens: {
+      sm: "600px",
+      md: "900px",
+    },
+  },
 
   plugins: [
     function ({ addVariant }) {
-      addVariant('child', '& > *');
-      addVariant('child-hover', '& > *:hover');
-    }
-  ],
+      addVariant("child", "& > *");
+      addVariant("child-hover", "& > *:hover");
+    },
 
+    require("tailwind-scrollbar")({ nocompatible: true }),
+  ],
 };

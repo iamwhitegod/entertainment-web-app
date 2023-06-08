@@ -25,10 +25,9 @@ const UserProvider = ({ children }) => {
 
     if (user && isPasswordCorrect) {
       setUser(user);
-      navigate("/home");
-    } else {
-      return null;
     }
+
+    navigate("/home");
   };
 
   return (

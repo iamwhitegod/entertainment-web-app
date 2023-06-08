@@ -7,11 +7,16 @@ import SearchBar from "../components/SearchBar";
 function Dashboard() {
   return (
     <div className="dashboard p[32px]">
-      <Box display="grid" gridTemplateColumns="min-content 1fr" gap={2} p={2}>
-        <Box gridColumn="1 / 2">
+      <Box
+        display="grid"
+        gridTemplateColumns={{ xs: "1fr", md: "min-content 1fr" }}
+        gap={{ xs: 3, md: 2 }}
+        p={2}
+      >
+        <Box gridColumn={{ xs: "1 / -1", md: "1 / 2" }}>
           <SideBar />
         </Box>
-        <Box gridColumn="2 / -1">
+        <Box gridColumn={{ xs: "1 / -1", md: "2 / -1" }}>
           <Box
             display="grid"
             gridTemplateColumns="1fr"

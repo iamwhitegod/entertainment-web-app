@@ -7,7 +7,7 @@ import Thumbnail from "../Thumbnail";
 
 function TrendingCard({ movie }) {
   return (
-    <Box position={"relative"}>
+    <Box position={"relative"} className="overflow-hidden snap-start mb-5">
       <Thumbnail src={movie.thumbnail.regular.medium} alt={movie.title} />
 
       <Box position={"absolute"} bottom={"12px"} left={"12px"}>
