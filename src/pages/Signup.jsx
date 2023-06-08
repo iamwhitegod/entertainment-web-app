@@ -9,8 +9,10 @@ import InputField from "../components/InputField";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import Logo from "../components/Logo";
+import { useUser } from "../contexts/auth";
 
 function SignUp() {
+  const { signupUser } = useUser();
   const initialValues = {
     email: "",
     password: "",
@@ -18,13 +20,26 @@ function SignUp() {
   };
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email().required(),
-    password: Yup.string().required(),
-    repeatPassword: Yup.string().required(),
+    email: Yup.string().email().required("Can't be empty"),
+    password: Yup.string()
+      .min(8, "Min of 8 characters")
+      .required("Can't be empty"),
+    repeatPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Password doesn't match")
+      .required("Can't be empty"),
   });
 
-  const onSubmit = (values, { resetForm }) => {
-    console.log(values);
+  const onSubmit = (values, { resetForm }, onSubmitProps) => {
+    try {
+      const res = signupUser(values);
+      onSubmitProps?.setSubmitting(false);
+
+      resetForm();
+    } catch (err) {
+      onSubmitProps?.setSubmitting(false);
+      resetForm();
+      alert(err.message);
+    }
   };
 
   return (
@@ -39,7 +54,15 @@ function SignUp() {
           validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
-          {({ values, handleChange, handleSubmit }) => (
+          {({
+            values,
+            handleChange,
+            handleSubmit,
+            errors,
+            isSubmitting,
+            touched,
+            setFieldTouched,
+          }) => (
             <form onSubmit={handleSubmit}>
               <Heading size={1}>SignUp</Heading>
 
@@ -54,6 +77,8 @@ function SignUp() {
                   placeholder="Email address"
                   value={values.email}
                   onChange={handleChange}
+                  onBlur={() => setFieldTouched("email")}
+                  errorMessage={touched.email && errors.email}
                 />
 
                 <InputField
@@ -63,6 +88,8 @@ function SignUp() {
                   placeholder="Password"
                   value={values.password}
                   onChange={handleChange}
+                  onBlur={() => setFieldTouched("password")}
+                  errorMessage={touched.password && errors.password}
                 />
 
                 <InputField
@@ -72,11 +99,13 @@ function SignUp() {
                   placeholder="Repeat password"
                   value={values.repeatPassword}
                   onChange={handleChange}
+                  onBlur={() => setFieldTouched("repeatPassword")}
+                  errorMessage={touched.repeatPassword && errors.repeatPassword}
                 />
               </div>
 
               <Button type="submit" className="btn btn--full mb-[24px]">
-                Create an account
+                {isSubmitting ? "Signing up..." : "Create an account"}
               </Button>
 
               <p className="desc-m text-center">

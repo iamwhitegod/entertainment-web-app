@@ -48,9 +48,10 @@ function Login() {
             values,
             handleChange,
             handleSubmit,
+            errors,
             isSubmitting,
-            dirty,
-            isValid,
+            touched,
+            setFieldTouched,
           }) => (
             <form onSubmit={handleSubmit}>
               <Heading size={1}>Login</Heading>
@@ -66,6 +67,8 @@ function Login() {
                   placeholder="Email address"
                   value={values.email}
                   onChange={handleChange}
+                  onBlur={() => setFieldTouched("email")}
+                  errorMessage={touched.email && errors.email}
                 />
 
                 <InputField
@@ -75,13 +78,15 @@ function Login() {
                   placeholder="Password"
                   value={values.password}
                   onChange={handleChange}
+                  onBlur={() => setFieldTouched("password")}
+                  errorMessage={touched.password && errors.password}
                 />
               </div>
 
               <Button
                 type="submit"
                 className="btn btn--full mb-[24px]"
-                disabled={!(dirty && isValid) || isSubmitting}
+                // disabled={!(dirty && isValid) || isSubmitting}
               >
                 {isSubmitting ? "Please wait..." : "Login to your account"}
               </Button>

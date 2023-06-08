@@ -4,8 +4,10 @@ import { Stack, Avatar } from "@mui/material";
 import Logo from "../components/Logo";
 import Icon from "../components/Icon";
 import { Link } from "react-router-dom";
+import { useUser } from "../contexts/auth";
 
 function SideBar() {
+  const { logoutUser } = useUser();
   return (
     <>
       <Stack
@@ -44,7 +46,7 @@ function SideBar() {
         </Stack>
 
         {/* <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" /> */}
-        <Avatar>MK</Avatar>
+        <Avatar onClick={() => logoutUser()}>MK</Avatar>
       </Stack>
     </>
   );
